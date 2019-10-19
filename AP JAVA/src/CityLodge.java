@@ -29,7 +29,7 @@ public class CityLodge extends Application{
 					+ "Display All Rooms: 6\r\n" + "Exit Program: 7\r\n" + "Enter your choice:");
 			try {
 				primaryStage.setTitle("Sample Java FX Application"); 
-				System.out.println("in try");
+				
 		        Button badd = new Button("Add room");
 		        Button brent = new Button("Rent room");
 		        Button breturn = new Button("return room");
@@ -53,7 +53,7 @@ public class CityLodge extends Application{
 		        r.getChildren().add(bdisplayrooms); 
 		        r.getChildren().add(bexit); 
 		  
-		        System.out.println("butoons added");
+		        
 		        // create a scene 
 		        Scene sc = new Scene(r, 800, 800);
 				
