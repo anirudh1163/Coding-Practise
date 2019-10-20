@@ -68,6 +68,12 @@ public class CityLodge extends Application{
 				bmaintenance.setOnAction(e -> RoomMaintainance.fun(primaryStage));
 				bcompletemaintainance.setOnAction(e -> CompleteMaintainance.fun(primaryStage));
 				bdisplayrooms.setOnAction(e -> DisplayAllRooms.fun(primaryStage));
+				bexit.setOnAction((event) -> {
+				    // Button was clicked, do something...
+				   // System.out.println(guestName.getText());
+				   primaryStage.close();
+				  //  System.out.println(combo_box.getSelectionModel().getSelectedItem().toString());    
+				});
 				
 				
 					

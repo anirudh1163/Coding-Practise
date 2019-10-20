@@ -12,6 +12,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
@@ -24,26 +25,48 @@ public class RentRoom {
 		
 
 		try {
-			
-			primaryStage.setTitle("Rent Room");
-			Label label = new Label("Hotel Management Main Menu");
-	        FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
+			Label label=new Label("Return Room");
+FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 	        
-	        TextField guestName = new TextField(); 
+	        primaryStage.setTitle("My First JavaFX GUI");
+	        Scene sc = new Scene(r, 800, 800);
 	        
-	        TextField phoneNumber = new TextField(); 
-	        String[] roomType = { "Standard", "Deluxe", "Suite", "Presidential Suite", "Ordinary" };
+	        Label room_id=new Label("Room ID");
+	        TextField roomId=new TextField();
+	        Label customer_id=new Label("Room ID");
+	        TextField customerid=new TextField();
+	        Button b =new Button("Submit");
+	        Label rentdate=new Label("rent date");
+	        DatePicker d=new DatePicker();
+	        Label numdays=new Label("Number of Days");
+	        TextField num_days=new TextField();
+		
+	        r.getChildren().add(room_id);
+	        r.getChildren().add(roomId);
+	        r.getChildren().add(customer_id);
+	        r.getChildren().add(customerid);
+	        r.getChildren().add(rentdate);
+	        r.getChildren().add(d);
+	        r.getChildren().add(numdays);
+	        r.getChildren().add(num_days);
+	        r.getChildren().add(b);
 	        
-	        ComboBox combo_box = new ComboBox(FXCollections.observableArrayList(roomType)); 
+	       Button home=new Button("Home");
+	       r.getChildren().add(home);
+	       CityLodge cityLodge = new CityLodge();
+	       home.setOnAction(e ->  cityLodge.start(primaryStage));
+	      
 	        
-	        r.getChildren().add(guestName);
-	        r.getChildren().add(phoneNumber);
-	        r.getChildren().add(combo_box);
 	        
-			
-			Scene sc = new Scene(r, 800, 800);
-			
-			
+			 
+	        b.setOnAction((event) -> {
+			    // Button was clicked, do something...
+			   // System.out.println(guestName.getText());
+			    System.out.println(roomId.getText());
+			    System.out.println(customerid.getText());
+			    System.out.println(d.getValue());
+			  //  System.out.println(combo_box.getSelectionModel().getSelectedItem().toString());    
+			});
 			//sc.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(sc);
 			primaryStage.show();

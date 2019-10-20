@@ -25,23 +25,32 @@ public class RoomMaintainance {
 
 		try {
 			
-			primaryStage.setTitle("Room Maintainance");
-			Label label = new Label("Hotel Management Main Menu");
-	        FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
+
+			Label label=new Label("Return Room");
+FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 	        
-	        TextField guestName = new TextField(); 
+	        primaryStage.setTitle("My First JavaFX GUI");
+	        Scene sc = new Scene(r, 800, 800);
 	        
-	        TextField phoneNumber = new TextField(); 
-	        String[] roomType = { "Standard", "Deluxe", "Suite", "Presidential Suite", "Ordinary" };
-	        
-	        ComboBox combo_box = new ComboBox(FXCollections.observableArrayList(roomType)); 
-	        
-	        r.getChildren().add(guestName);
-	        r.getChildren().add(phoneNumber);
-	        r.getChildren().add(combo_box);
-	        
-			
-			Scene sc = new Scene(r, 800, 800);
+	         Label roomid=new Label("Room ID");
+	         TextField roomId=new TextField();
+	         Button b = new Button("Submit");
+	         
+	         r.getChildren().add(roomid);
+	         r.getChildren().add(roomId);
+	         r.getChildren().add(b);
+	         Button home=new Button("Home");
+		       r.getChildren().add(home);
+		       CityLodge cityLodge = new CityLodge();
+		       home.setOnAction(e ->  cityLodge.start(primaryStage));
+	         
+	         b.setOnAction((event) -> {
+				    // Button was clicked, do something...
+				   // System.out.println(guestName.getText());
+				    System.out.println(roomId.getText());
+				   
+				  //  System.out.println(combo_box.getSelectionModel().getSelectedItem().toString());    
+				});
 			
 			
 			//sc.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

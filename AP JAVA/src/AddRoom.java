@@ -92,7 +92,10 @@ public class AddRoom {
 			button1.setOnAction(e -> primaryStage.setScene(scene1)); 
 			 button2.setOnAction(e -> primaryStage.setScene(scene2));
 			 
-			 
+			 Button home=new Button("Home");
+		       r.getChildren().add(home);
+		       CityLodge cityLodge = new CityLodge();
+		       home.setOnAction(e ->  cityLodge.start(primaryStage));
 			 
 			 b1.setOnAction((event) -> {
 				    // Button was clicked, do something...
