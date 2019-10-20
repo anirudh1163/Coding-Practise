@@ -23,7 +23,7 @@ public class CityLodge extends Application{
 	public void start(Stage primaryStage) {
 
 		
-			// city lodge menu
+			
 			System.out.println("**** CITYLODGE MAIN MENU ****\r\n" + "Add Room: 1\r\n" + "Rent Room: 2\r\n"
 					+ "Return Room: 3\r\n" + "Room Maintenance: 4\r\n" + "Complete Maintenance: 5\r\n"
 					+ "Display All Rooms: 6\r\n" + "Exit Program: 7\r\n" + "Enter your choice:");
@@ -37,14 +37,8 @@ public class CityLodge extends Application{
 		        Button bcompletemaintainance = new Button ("Complete maintainance");
 		        Button bdisplayrooms = new Button ("Display all rooms");
 		        Button bexit = new Button ("Exit");
-		        
-		        
-		        // create a stack pane 
-		        //StackPane r = new StackPane(); 
 		        Label label = new Label("Hotel Management Main Menu");
 		        FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
-		  
-		        // add button 
 		        r.getChildren().add(badd); 
 		        r.getChildren().add(brent);
 		        r.getChildren().add(breturn);
@@ -52,13 +46,7 @@ public class CityLodge extends Application{
 		        r.getChildren().add(bcompletemaintainance); 
 		        r.getChildren().add(bdisplayrooms); 
 		        r.getChildren().add(bexit); 
-		  
-		        
-		        // create a scene 
 		        Scene sc = new Scene(r, 800, 800);
-				
-				
-				//sc.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(sc);
 				primaryStage.show();
 				System.out.println("in action events");
@@ -69,27 +57,10 @@ public class CityLodge extends Application{
 				bcompletemaintainance.setOnAction(e -> CompleteMaintainance.fun(primaryStage));
 				bdisplayrooms.setOnAction(e -> DisplayAllRooms.fun(primaryStage));
 				bexit.setOnAction((event) -> {
-				    // Button was clicked, do something...
-				   // System.out.println(guestName.getText());
 				   primaryStage.close();
-				  //  System.out.println(combo_box.getSelectionModel().getSelectedItem().toString());    
 				});
-				
-				
-					
-					//System.out.println("selected return room");
-					//service.returnRoom();
-				
-
-				
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-		
-			
-			
-			
-
 	}
-
 	}
