@@ -6,6 +6,7 @@ import Exceptions.PerformMaintenanceException;
 import Exceptions.RentExceptions;
 import Exceptions.ReturnException;
 import backend.LodgeService;
+import backend.result;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -49,10 +50,11 @@ FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 				    
 				    LodgeService service = new LodgeService();
 				    try {
-						service.completeRoomMaintenance(roomId.getText(),(d.getValue()).toString());
+						service.completeRoomMaintenance(roomId.getText(),(d.getValue()).toString(),primaryStage);
 					} catch (CompleteMaintenanceException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						String ress=roomId.getText() + " roon not found";
+						result.fun(primaryStage,ress);
 					}
 				    
 				});

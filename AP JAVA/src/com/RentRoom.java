@@ -68,7 +68,7 @@ FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 			    System.out.println(num_days.getText());
 			    LodgeService service = new LodgeService();
 			    try {
-					service.rentRoom(roomId.getText(),customerid.getText(),(d.getValue().toString()),num_days.getText());
+					service.rentRoom(roomId.getText(),customerid.getText(),(d.getValue().toString()),num_days.getText(),primaryStage);
 				} catch (RentExceptions e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

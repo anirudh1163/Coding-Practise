@@ -17,6 +17,7 @@ public class MainClass extends Application {
 	public void start(Stage primaryStage) {
 		
 		try {
+			final Stage p1=primaryStage;
 			
 			CityLodge cityLodge = new CityLodge();
 			Stage stage=new Stage();

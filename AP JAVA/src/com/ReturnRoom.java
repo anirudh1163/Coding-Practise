@@ -64,7 +64,7 @@ FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 			    System.out.println(d.getValue());
 			    LodgeService service = new LodgeService();
 			    try {
-					service.returnRoom(roomId.getText(),(returndate.getText()).toString());
+					service.returnRoom(roomId.getText(),(returndate.getText()).toString(),primaryStage);
 				} catch (ReturnException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -91,7 +91,7 @@ public class AddRoom {
 				    System.out.println(labels1.getText()); 
 				    LodgeService service = new LodgeService();
 				    try {
-						service.addRoom(roomid1.getText(),standard_beds.getSelectionModel().getSelectedItem().toString(),labels1.getText(),d.getValue(),tf1.getText());
+						service.addRoom(roomid1.getText(),standard_beds.getSelectionModel().getSelectedItem().toString(),labels1.getText(),d.getValue(),tf1.getText(),primaryStage);
 					} catch (RentExceptions e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -107,7 +107,7 @@ public class AddRoom {
 				    System.out.println(labels.getText()); 
 				    LodgeService service = new LodgeService();
 				    try {
-						service.addRoom(roomid2.getText(),suite_beds.getSelectionModel().getSelectedItem().toString(),labels.getText(),d1.getValue(),tf2.getText());
+						service.addRoom(roomid2.getText(),suite_beds.getSelectionModel().getSelectedItem().toString(),labels.getText(),d1.getValue(),tf2.getText(),primaryStage);
 					} catch (RentExceptions e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

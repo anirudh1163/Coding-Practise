@@ -14,11 +14,14 @@ import Exceptions.CompleteMaintenanceException;
 import Exceptions.PerformMaintenanceException;
 import Exceptions.RentExceptions;
 import Exceptions.ReturnException;
+import backend.LodgeService;
+import backend.Room;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -38,39 +41,26 @@ public class DisplayAllRooms {
 		try {
 			primaryStage.setTitle("DisplayAllRooms");
 			String filePath="/Users/anirudhmaheswaram/Documents/sample.csv";
-			File file = new File(filePath); 
 			
-			  
-		    try { 
-		        // create FileWriter object with file as parameter 
-		        FileWriter outputfile = new FileWriter(file); 
-		  
-		        // create CSVWriter object filewriter object as parameter 
-		        CSVWriter writer = new CSVWriter(outputfile); 
-		  
-		        // create a List which contains String array 
-		        List<String[]> data = new ArrayList<String[]>(); 
-		        data.add(new String[] { "Name", "Class", "Marks" }); 
-		        data.add(new String[] { "Aman", "10", "620" }); 
-		        data.add(new String[] { "Suraj", "10", "630" }); 
-		        writer.writeAll(data); 
-		  
-		        // closing writer connection 
-		        writer.close(); 
-		    } 
-		    catch (IOException e) { 
-		        // TODO Auto-generated catch block 
-		        e.printStackTrace(); 
-		    } 
 					
 		
 		    Label label = new Label("Hotel Management Main Menu");
 	        FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 		   
 			Scene sc = new Scene(r, 800, 800);
-			TextField guestName = new TextField("Writing into file sample");
-			 r.getChildren().add(guestName);
+			LodgeService service = new LodgeService();
+			List<Room> rooms =  service.displayRoom();
+			String response="";
+			Label l=new Label();
+			for (Room room : rooms) {
+				response=response+room.getDetails()+"\n";
+				l.setText(response);
+			}
+			r.getChildren().addAll(l);
 			//sc.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Button home=new Button("home");
+			CityLodge cityLodge = new CityLodge();
+		       home.setOnAction(e ->  cityLodge.start(primaryStage));
 			primaryStage.setScene(sc);
 			primaryStage.show();
 			
