@@ -1,5 +1,7 @@
+package com;
 import java.util.Scanner;
-
+import backend.*;
+import backend.LodgeService;
 import Exceptions.CompleteMaintenanceException;
 import Exceptions.PerformMaintenanceException;
 import Exceptions.RentExceptions;
@@ -34,14 +36,20 @@ FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 	        
 	        Label room_id=new Label("Room ID");
 	        TextField roomId=new TextField();
+	        Label customer_id=new Label("Room ID");
+	        TextField customerid=new TextField();
 	        Button b =new Button("Submit");
 	        Label returndate=new Label("return date");
 	        DatePicker d=new DatePicker();
+	        Label days=new Label("DAYS");
+	        TextField day=new TextField();
+	        
 		
 	        r.getChildren().add(room_id);
 	        r.getChildren().add(roomId);
 	        r.getChildren().add(returndate);
 	        r.getChildren().add(d);
+	        
 	        r.getChildren().add(b);
 	        
 	        Button home=new Button("Home");
@@ -54,7 +62,13 @@ FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 			   // System.out.println(guestName.getText());
 			    System.out.println(roomId.getText());
 			    System.out.println(d.getValue());
-			  //  System.out.println(combo_box.getSelectionModel().getSelectedItem().toString());    
+			    LodgeService service = new LodgeService();
+			    try {
+					service.returnRoom(roomId.getText(),(returndate.getText()).toString());
+				} catch (ReturnException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			});
 			//sc.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	      primaryStage.setScene(sc);

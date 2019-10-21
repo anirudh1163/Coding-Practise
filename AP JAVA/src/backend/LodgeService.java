@@ -1,4 +1,6 @@
+package backend;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,13 +11,15 @@ import Exceptions.RentExceptions;
 import Exceptions.ReturnException;
 
 public class LodgeService {
+	
+	
 
 	private static Scanner scanner = new Scanner(System.in);
 	static List<Room> rooms = new ArrayList<Room>();
 
-	public void completeRoomMaintenance() throws CompleteMaintenanceException {
+	public void completeRoomMaintenance(String string, String string2) throws CompleteMaintenanceException {
 		System.out.println("Enter Room Id:");
-		String roomId = scanner.nextLine();
+		String roomId = string;
 
 		// validate room id
 		Room room = getRoom(roomId);
@@ -26,20 +30,21 @@ public class LodgeService {
 
 		// get maintenance completion date
 		System.out.println("Enter completion date:");
-		String dateRaw[] = scanner.nextLine().split("/");
+		String dateRaw[] = string2.split("/");
 		DateTime completionDate = new DateTime(Integer.parseInt(dateRaw[0]), Integer.parseInt(dateRaw[1]),
 				Integer.parseInt(dateRaw[2]));
 
 		// complete maintenance
-		if (room.getRoomStatus().equals("Available"))
-			System.out.println(roomId + " maintance is completed and ready for booking.");
+		if (room.getRoomStatus().equals("Available")) {
+			String ress=roomId + " maintance is completed and ready for booking.";
+			System.out.println(roomId + " maintance is completed and ready for booking.");}
 		else
 			System.out.println("Error");
 	}
 
-	public void performRoomMaintenance()throws PerformMaintenanceException {
+	public void performRoomMaintenance(String string)throws PerformMaintenanceException {
 		System.out.println("Enter Room Id:");
-		String roomId = scanner.nextLine();
+		String roomId = string;
 
 		// validate room id
 		Room room = getRoom(roomId);
@@ -56,9 +61,9 @@ public class LodgeService {
 
 	}
 
-	public void returnRoom() throws ReturnException {
+	public void returnRoom(String string, String string2) throws ReturnException {
 		System.out.println("Enter Room Id:");
-		String roomId = scanner.nextLine();
+		String roomId = string;
 
 		// validate room id
 		Room room = getRoom(roomId);
@@ -69,7 +74,7 @@ public class LodgeService {
 
 		// get return date
 		System.out.println("Enter the return date:");
-		String dateRaw[] = scanner.nextLine().split("/");
+		String dateRaw[] = string2.split("/");
 		DateTime returnDate = new DateTime(Integer.parseInt(dateRaw[0]), Integer.parseInt(dateRaw[1]),
 				Integer.parseInt(dateRaw[2]));
 
@@ -82,9 +87,9 @@ public class LodgeService {
 			System.out.println("Room " + roomId + " cannot be returned");
 	}
 
-	public void rentRoom() throws RentExceptions {
+	public void rentRoom(String string, String string2, String string3, String string4) throws RentExceptions {
 		System.out.println("Enter Room Id:");
-		String roomId = scanner.nextLine();
+		String roomId = string;
 
 		// validate room id
 		Room room = getRoom(roomId);
@@ -95,13 +100,13 @@ public class LodgeService {
 
 		// get other details
 		System.out.println("Enter CustomerID:");
-		String customerId = scanner.nextLine();
+		String customerId = string2;
 		System.out.println("Rent date(dd/mm/yyyy):");
-		String dateRaw[] = scanner.nextLine().split("/");
+		String dateRaw[] = string3.split("/");
 		DateTime rentDate = new DateTime(Integer.parseInt(dateRaw[0]), Integer.parseInt(dateRaw[1]),
 				Integer.parseInt(dateRaw[2]));
 		System.out.println("How many days?:");
-		int numOfRentDay = Integer.parseInt(scanner.nextLine());
+		int numOfRentDay = Integer.parseInt(string4);
 
 		// rent room
 		//boolean roomRentStatus = room.rent(customerId, rentDate, numOfRentDay);
@@ -121,10 +126,10 @@ public class LodgeService {
 		return null;
 	}
 
-	public void addRoom() throws RentExceptions, ReturnException {
+	public void addRoom(String string, String string2, String string3, LocalDate localDate, String string4) throws RentExceptions, ReturnException {
 		Room room = null;
 		System.out.println("Enter Room Id:");
-		String roomId = scanner.nextLine();
+		String roomId = string;
 
 		// validate room id
 		if (getRoom(roomId) != null) {
@@ -135,19 +140,19 @@ public class LodgeService {
 
 		// get other details
 		System.out.println("Enter the Room type:");
-		String roomType = scanner.nextLine();
+		String roomType = string3;
 		if (roomType.equalsIgnoreCase("Suite")) {
 			room = new Suite();
 			roomId = "S_" + roomId;
 			System.out.println("Enter last Maintainance Date:");
-			String dateRaw[] = scanner.nextLine().split("/");
+			String dateRaw[] = (localDate.toString()).split("/");
 			room.setLastMaintenanceDate(new DateTime(Integer.parseInt(dateRaw[0]), Integer.parseInt(dateRaw[1]),
 					Integer.parseInt(dateRaw[2])));
 		} else if (roomType.equalsIgnoreCase("Standard")) {
 			room = new StandardRoom();
 			roomId = "R_" + roomId;
 			System.out.println("Enter no. of beds:");
-			int numOfBeds = Integer.parseInt(scanner.nextLine());
+			int numOfBeds = Integer.parseInt(string3);
 			if (numOfBeds != 1 && numOfBeds != 2 && numOfBeds != 4) {
 				throw new RentExceptions("Invalid number of beds (valid are :1/2/4)");			}
 			room.setNumOfBed(numOfBeds);
@@ -158,7 +163,7 @@ public class LodgeService {
 		room.setRoomId(roomId);
 		room.setRoomType(roomType);
 		System.out.println("Enter Summary:");
-		String summary = scanner.nextLine();
+		String summary = string4;
 		room.setSummary(summary);
 		System.out.println("Room Status:");
 		room.setRoomStatus("Available");

@@ -1,9 +1,11 @@
+package com;
 import java.util.Scanner;
 
 import Exceptions.CompleteMaintenanceException;
 import Exceptions.PerformMaintenanceException;
 import Exceptions.RentExceptions;
 import Exceptions.ReturnException;
+import backend.LodgeService;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -60,14 +62,23 @@ FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 	        
 			 
 	        b.setOnAction((event) -> {
-			    // Button was clicked, do something...
-			   // System.out.println(guestName.getText());
 			    System.out.println(roomId.getText());
 			    System.out.println(customerid.getText());
 			    System.out.println(d.getValue());
-			  //  System.out.println(combo_box.getSelectionModel().getSelectedItem().toString());    
+			    System.out.println(num_days.getText());
+			    LodgeService service = new LodgeService();
+			    try {
+					service.rentRoom(roomId.getText(),customerid.getText(),(d.getValue().toString()),num_days.getText());
+				} catch (RentExceptions e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			    
+			    //Suite sq=new Suite();
+			    //sq.rent(roomId.getText(),customerid.getText(),d.getValue(),num_days.getText());
+			      
 			});
-			//sc.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
 			primaryStage.setScene(sc);
 			primaryStage.show();
 			

@@ -1,9 +1,11 @@
+package com;
 import java.util.Scanner;
 
 import Exceptions.CompleteMaintenanceException;
 import Exceptions.PerformMaintenanceException;
 import Exceptions.RentExceptions;
 import Exceptions.ReturnException;
+import backend.LodgeService;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -44,6 +46,15 @@ FlowPane r = new FlowPane(Orientation.VERTICAL,20.0, 20.0, label);
 		        b.setOnAction((event) -> {
 				    System.out.println(roomId.getText());
 				    System.out.println(d.getValue());
+				    
+				    LodgeService service = new LodgeService();
+				    try {
+						service.completeRoomMaintenance(roomId.getText(),(d.getValue()).toString());
+					} catch (CompleteMaintenanceException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				    
 				});
 			primaryStage.setScene(sc);
 			primaryStage.show();

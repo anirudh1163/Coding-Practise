@@ -1,4 +1,4 @@
-
+package backend;
 public class HiringRecord {
 	private String roomId;
 	private DateTime rentDate;
